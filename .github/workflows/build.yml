@@ -17,7 +17,7 @@ jobs:
   windows:
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Version
         shell: pwsh
@@ -54,12 +54,13 @@ jobs:
             Compress-Archive -Path "$d\*" -DestinationPath "$d.zip" -Force
             Remove-Item -Recurse $d
           }
-          Get-ChildItem dist -File | ForEach-Object {
+          $sums = Get-ChildItem dist -File | ForEach-Object {
             "$((Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower())  $($_.Name)"
-          } | Out-File -Encoding ascii dist\SHA256SUMS.txt
+          }
+          $sums | Out-File -Encoding ascii dist\SHA256SUMS.txt
           Get-Content dist\SHA256SUMS.txt
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: Zyntra-${{ env.ZYNTRA_VERSION }}
           path: dist/*
