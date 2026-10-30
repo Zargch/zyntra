@@ -1,6 +1,7 @@
 # Compila Zyntra (x64 y x86), arma el instalador y las versiones portables.
 # - En cada push y a mano (Actions > Build > Run workflow): deja todo como artefacto del run.
 # - Al subir una etiqueta vX.Y.Z: crea un borrador de Release con los archivos.
+# - Cada archivo publicado lleva una atestacion de procedencia firmada (Sigstore).
 name: Build
 
 on:
@@ -12,6 +13,8 @@ on:
 
 permissions:
   contents: write
+  id-token: write      # firma Sigstore de la atestacion
+  attestations: write
 
 jobs:
   windows:
@@ -59,6 +62,18 @@ jobs:
           }
           $sums | Out-File -Encoding ascii dist\SHA256SUMS.txt
           Get-Content dist\SHA256SUMS.txt
+
+      # firma de procedencia: prueba que cada archivo salio de este repositorio y de este flujo
+      # (se verifica con: gh attestation verify <archivo> --repo Zargch/zyntra)
+      - name: Atestacion de procedencia
+        if: github.event_name != 'pull_request'
+        uses: actions/attest-build-provenance@v3
+        with:
+          subject-path: |
+            dist/*.exe
+            dist/*.zip
+            bin/x64/Zyntra.exe
+            bin/x86/Zyntra.exe
 
       - uses: actions/upload-artifact@v5
         with:

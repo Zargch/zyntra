@@ -13,7 +13,15 @@
   Creado por <a href="https://github.com/Zargch"><b>Zargch</b></a> · Código abierto (MIT) · Gratis, sin anuncios y sin telemetría
 </p>
 
+<p align="center">
+  <a href="../../releases/latest"><b>⬇ Descargar Zyntra para Windows</b></a>
+</p>
+
 ---
+
+<p align="center">
+  <img src="docs/screenshots/biblioteca.jpg" alt="Biblioteca de Zyntra con el carrusel de juegos recientes y el panel lateral">
+</p>
 
 ## ¿Qué es Zyntra?
 
@@ -33,9 +41,25 @@ de cada tienda, así que tus compras, partidas guardadas, logros y antitrampas s
 - **Animación de inicio** con el logo (se salta con clic o Esc).
 - **Muy ligero:** unos 60 MB de RAM en reposo y 0 % de CPU en segundo plano. Al minimizarlo libera los videos y las imágenes.
 
+## Capturas
+
+| | |
+|---|---|
+| ![Animación de inicio](docs/screenshots/intro.jpg) | ![Biblioteca filtrada por Steam](docs/screenshots/filtros.jpg) |
+| **Animación de inicio.** Se salta con clic o Esc. | **Filtros por tienda y buscador.** El panel lateral muestra la ficha del juego elegido. |
+| ![Ficha del juego](docs/screenshots/ficha.jpg) | ![Reputación y galería](docs/screenshots/ficha-galeria.jpg) |
+| **Ficha a pantalla completa:** carátula, gameplay y descripción. | **Segunda sección:** reputación y galería de capturas (clic para ampliar). |
+
+## Cómo funciona
+
+1. **Detecta** tus bibliotecas leyendo los archivos que cada tienda deja en tu PC: no inicia sesión en ninguna cuenta.
+2. **Ordena** los juegos por el último que jugaste, según el registro de Windows y su propio historial.
+3. **Completa** cada juego con carátula, descripción, capturas, reseñas y un clip corto de gameplay que descarga de Steam o Microsoft Store. Lo guarda en caché, así la próxima vez se abre al instante.
+4. **Abre** el juego con el lanzador oficial de su tienda (`steam://`, `com.epicgames.launcher://`, la app de Xbox o el cliente de Riot), o con su `.exe` si lo añadiste a mano.
+
 ## Descarga e instalación
 
-> Por ahora el repositorio es privado. Cuando se publique, las descargas estarán en **[Releases](../../releases)**.
+Las descargas están en **[Releases](../../releases/latest)**.
 
 1. Descarga **`Zyntra-Setup-x.y.z.exe`**. Es un solo instalador que sirve para Windows de 64 y de 32 bits y elige la versión correcta solo.
 2. Ábrelo y sigue el asistente. No pide permisos de administrador: por defecto se instala solo para tu usuario.
@@ -53,11 +77,22 @@ Get-FileHash .\Zyntra-Setup-1.0.0.exe -Algorithm SHA256
 
 El resultado debe coincidir con la línea de ese archivo en `SHA256SUMS.txt`.
 
+### Firma de origen (atestación)
+
+Cada archivo publicado lleva una **atestación de procedencia firmada** (Sigstore, emitida por GitHub Actions).
+Esa firma prueba que el archivo se compiló en este repositorio, desde un commit concreto y con [build.yml](.github/workflows/build.yml),
+y que nadie lo modificó después. Para comprobarlo, con [GitHub CLI](https://cli.github.com):
+
+```powershell
+gh attestation verify .\Zyntra-Setup-1.0.0.exe --repo Zargch/zyntra
+```
+
 ### «Windows protegió su PC» (SmartScreen)
 
-Zyntra todavía no tiene firma digital, que es un certificado pago. Por eso, en las primeras descargas Windows puede mostrar
-ese aviso. Haz clic en **Más información → Ejecutar de todas formas**. El código fuente está aquí completo y cada
-versión se compila de forma pública en GitHub Actions a partir de él. Ver [SECURITY.md](SECURITY.md).
+El `.exe` todavía no lleva firma Authenticode: el certificado de firma de código está en trámite (ver [Hoja de ruta](#hoja-de-ruta)).
+Por eso, en las primeras descargas Windows puede mostrar ese aviso. Haz clic en **Más información → Ejecutar de todas formas**.
+El código fuente está aquí completo, y cada versión se compila de forma pública y verificable a partir de él.
+Ver [SECURITY.md](SECURITY.md).
 
 ## Requisitos
 
@@ -145,7 +180,8 @@ Microsoft Store para obtener información de tus juegos. Detalles en [PRIVACIDAD
 ## Hoja de ruta
 
 - [x] Windows x64 y x86
-- [ ] Firma digital del ejecutable (SignPath para proyectos de código abierto)
+- [x] Atestación de procedencia firmada (Sigstore) en cada versión
+- [ ] Firma Authenticode del ejecutable (certificado gratuito de SignPath Foundation para código abierto, en trámite)
 - [ ] Interfaz en inglés
 - [ ] macOS (Steam, Epic) y Linux (Steam, Heroic, Lutris): port con una capa gráfica multiplataforma
 

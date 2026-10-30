@@ -1754,8 +1754,16 @@ public:
     }
     float r = right - 20;
     float panelBtnW = 36, addW = 36, sortW = 118, refW = 134, gap = 8;
-    float tools = r - panelBtnW - gap - addW - gap - sortW - gap - refW - gap;  // borde derecho del buscador
-    float x0 = 290, chipsW = 0;
+    float tools = 0, x0 = 290, chipsW = 0;
+    auto layout = [&] { tools = r - panelBtnW - gap - addW - gap - sortW - gap - refW - gap; };  // borde derecho del buscador
+    layout();
+    // ventana estrecha: Actualizar y el orden quedan solo con su icono y, si aun no cabe, se quitan los filtros
+    float minLeft = x0 + (chips.empty() ? 0 : chips[0].second + 6) + 12 + 150;
+    bool compactRef = tools < minLeft;
+    if (compactRef) { refW = 36; layout(); }
+    bool compactSort = tools < minLeft;
+    if (compactSort) { sortW = 36; layout(); }
+    if (tools < minLeft) chips.clear();
     for (auto& c : chips) chipsW += c.second + 6;
     while (chips.size() > 1 && x0 + chipsW + 12 + 170 > tools) { chipsW -= chips.back().second + 6; chips.pop_back(); }
     float x = x0;
@@ -1765,10 +1773,12 @@ public:
       x += c.second + 6;
     }
     // buscador
+    if (chips.empty()) x = 230;  // sin filtros, el buscador empieza junto al logo
     D2D1_RECT_F sr{ std::max(x + 10, tools - 260), 17, tools, 51 };
-    searchRect = sr;
+    bool showSearch = sr.right - sr.left >= 110;  // demasiado estrecha: sin buscador
+    searchRect = showSearch ? sr : D2D1_RECT_F{};
     bool focus = searchActive || !search.empty();
-    if (vis) {
+    if (vis && showSearch) {
     FillRound(rt, sr, 10, Z::elev);
     StrokeRound(rt, { sr.left + .5f, sr.top + .5f, sr.right - .5f, sr.bottom - .5f }, 10, focus ? WithA(Z::brand, .75f) : Z::border, 1);
     DrawSymbol(rt, L"", { sr.left + 8, sr.top, sr.left + 32, sr.bottom }, 12, focus ? Z::brandHi : Z::text2);
@@ -1782,9 +1792,9 @@ public:
     }
     // actualizar, orden, añadir y panel
     float bx = tools + gap;
-    ToolBtn(rt, { bx, 17, bx + refW, 51 }, L"", refreshing ? L"Actualizando…" : L"Actualizar", [this] { if (!refreshing) Refresh(); });
+    ToolBtn(rt, { bx, 17, bx + refW, 51 }, L"", compactRef ? L"" : refreshing ? L"Actualizando…" : L"Actualizar", [this] { if (!refreshing) Refresh(); });
     bx += refW + gap;
-    ToolBtn(rt, { bx, 17, bx + sortW, 51 }, L"", recent ? L"Recientes" : L"A–Z", [this] { recent = !recent; Filter(); Invalidate(); });
+    ToolBtn(rt, { bx, 17, bx + sortW, 51 }, L"", compactSort ? L"" : recent ? L"Recientes" : L"A–Z", [this] { recent = !recent; Filter(); Invalidate(); });
     bx += sortW + gap;
     ToolBtn(rt, { bx, 17, bx + addW, 51 }, L"", L"", [this] { AddMenu(); });
     bx += addW + gap;
@@ -2872,6 +2882,7 @@ public:
     trailers = GetPrivateProfileIntW(L"Games", L"trailers", 1, IniPath().c_str()) != 0;
     panelAnim.Set(panelOpen ? 1.f : 0.f);
     selAnim.Set(1);
+    slideFade.Set(1);  // la primera diapositiva se ve completa desde el inicio (sin fundido)
     RECT mon = MonitorRect();
     int ww = std::min(Px(1460), (int)(mon.right - mon.left) - Px(80)), hh = std::min(Px(880), (int)(mon.bottom - mon.top) - Px(120));
     hwnd = CreateWindowExW(0, kGameClass, L"Zyntra", WS_OVERLAPPEDWINDOW, (mon.left + mon.right - ww) / 2, (mon.top + mon.bottom - hh) / 2,

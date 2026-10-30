@@ -5,6 +5,7 @@
 - Los ejecutables y el instalador se compilan en **GitHub Actions** ([build.yml](.github/workflows/build.yml)) a partir del código de este repositorio, sin pasos manuales.
 - El `.exe` no usa empaquetadores ni ofuscación. Lleva datos de versión y tiene ASLR, DEP y Control Flow Guard activados.
 - Cada versión publica `SHA256SUMS.txt` con las sumas de todos los archivos.
+- Cada archivo lleva una atestación de procedencia firmada con Sigstore. Se verifica con `gh attestation verify <archivo> --repo Zargch/zyntra`.
 - Antes de publicarse, cada versión se escanea con Microsoft Defender.
 
 ## Lo que Zyntra no hace
