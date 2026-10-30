@@ -1,0 +1,61 @@
+﻿POLÍTICA DE PRIVACIDAD DE ZYNTRA
+Versión 1.0, vigente desde el 30 de octubre de 2026
+
+Resumen: Zyntra no recopila datos personales. No tiene cuentas, publicidad, analítica ni telemetría.
+Todo lo que guarda se queda en tu equipo.
+
+1. RESPONSABLE
+   Zyntra es un proyecto de código abierto de Zargch (https://github.com/Zargch/zyntra).
+   Zargch no recibe, almacena ni trata datos de los usuarios de Zyntra.
+
+2. QUÉ LEE ZYNTRA EN TU EQUIPO
+   Para armar tu biblioteca, Zyntra lee solo en tu equipo, sin enviarlo a ningún lado:
+   - las carpetas y archivos de configuración de Steam, Epic Games, Xbox/PC Game Pass y Riot Games;
+   - los accesos directos de juegos que añadas a mano;
+   - el registro de Windows «UserAssist» y su propio registro, para ordenar los juegos por el
+     último que jugaste;
+   - qué programas están abiertos, para saber si un juego se está ejecutando.
+
+3. QUÉ GUARDA ZYNTRA
+   En %LOCALAPPDATA%\Zyntra guarda:
+   - config.ini: tus preferencias, los juegos que añadiste u ocultaste y la fecha en que jugaste
+     cada uno;
+   - games\: la caché de carátulas, descripciones, capturas, reseñas y videos cortos;
+   - crash.log: solo si el programa se cierra por un error. Guarda la fecha, un código técnico y
+     la versión.
+   Para borrar todo, desinstala Zyntra (el desinstalador borra esa carpeta) o elimínala a mano.
+
+4. CONEXIONES A INTERNET
+   Zyntra se conecta solo a estos servicios públicos, para obtener información de tus juegos:
+   - store.steampowered.com y cdn.akamai.steamstatic.com (Valve/Steam), y los servidores de
+     imágenes y video que Steam indique;
+   - steamspy.com (reseñas de juegos de Steam);
+   - displaycatalog.mp.microsoft.com (Microsoft Store), y los servidores de imágenes y video que
+     Microsoft indique.
+   En esas consultas se envía el nombre o el identificador del juego. Como en cualquier conexión,
+   esos servicios también ven tu dirección IP y la versión de Zyntra. Su tratamiento lo rigen las
+   políticas de privacidad de Valve y Microsoft. Zyntra no les envía tu nombre, tu correo, tus
+   cuentas ni ningún otro dato personal.
+
+5. LO QUE ZYNTRA NO HACE
+   - No inicia sesión en tus cuentas ni lee tus contraseñas.
+   - No envía tu lista de juegos, tus horas de juego ni nada de tu equipo a Zargch ni a terceros.
+   - No muestra publicidad ni usa rastreadores.
+   - No se ejecuta al iniciar Windows ni se queda en segundo plano cuando lo cierras.
+
+6. MENORES DE EDAD
+   Zyntra no recopila datos de nadie, tampoco de menores. Las clasificaciones por edad de cada juego
+   siguen siendo responsabilidad de su tienda y de los padres o tutores.
+
+7. TUS DERECHOS
+   Como Zargch no tiene datos tuyos, no hay datos que consultar, corregir o suprimir en sus manos.
+   Tus datos locales los controlas tú (punto 3). Para ejercer tus derechos sobre lo que vean Valve o
+   Microsoft, dirígete a ellos.
+   Esta política sigue los principios de la Ley 1581 de 2012 de Colombia (habeas data) y del
+   Reglamento General de Protección de Datos (RGPD) de la Unión Europea.
+
+8. CAMBIOS
+   Si una versión futura cambia lo que hace Zyntra con los datos, esta política se actualizará
+   antes de publicar esa versión.
+
+Contacto: https://github.com/Zargch/zyntra/issues

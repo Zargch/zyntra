@@ -1,0 +1,35 @@
+// Recursos de Zyntra: icono, logo PNG y datos de version (los muestra Propiedades > Detalles)
+#include <winver.h>
+#include "version.h"
+
+1 ICON "..\\assets\\zyntra.ico"
+2 RCDATA "..\\assets\\zyntra-icon-mark.png"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION ZYNTRA_VERSION_MAJOR, ZYNTRA_VERSION_MINOR, ZYNTRA_VERSION_PATCH, 0
+ PRODUCTVERSION ZYNTRA_VERSION_MAJOR, ZYNTRA_VERSION_MINOR, ZYNTRA_VERSION_PATCH, 0
+ FILEFLAGSMASK 0x3fL
+ FILEFLAGS 0x0L
+ FILEOS VOS_NT_WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE 0x0L
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904b0"
+    BEGIN
+      VALUE "CompanyName", "Zargch"
+      VALUE "FileDescription", "Zyntra - launcher de juegos"
+      VALUE "FileVersion", ZYNTRA_VERSION_STR
+      VALUE "InternalName", "Zyntra"
+      VALUE "LegalCopyright", "Copyright (c) 2026 Zargch. Licencia MIT."
+      VALUE "OriginalFilename", "Zyntra.exe"
+      VALUE "ProductName", "Zyntra"
+      VALUE "ProductVersion", ZYNTRA_VERSION_STR
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x409, 1200
+  END
+END

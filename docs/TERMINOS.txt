@@ -1,0 +1,78 @@
+﻿TÉRMINOS Y CONDICIONES DE USO DE ZYNTRA
+Versión 1.0, vigente desde el 30 de octubre de 2026
+
+Zyntra es un launcher de juegos gratuito y de código abierto creado por Zargch
+(https://github.com/Zargch/zyntra). Al instalar o usar Zyntra aceptas estos términos.
+Si no estás de acuerdo, no lo instales ni lo uses.
+
+1. LICENCIA
+   Zyntra se distribuye bajo la licencia MIT (archivo LICENSE.txt). Puedes usarlo, copiarlo,
+   modificarlo y redistribuirlo de forma gratuita, incluso con fines comerciales, siempre que
+   conserves el aviso de copyright «Copyright (c) 2026 Zargch» y el texto de la licencia.
+   Si estos términos y la licencia MIT se contradicen, prevalece la licencia MIT.
+
+2. QUÉ HACE ZYNTRA
+   Zyntra busca los juegos que ya tienes instalados (Steam, Epic Games, Xbox/PC Game Pass,
+   Riot Games y los que añadas a mano), los muestra en una biblioteca y los abre con el
+   lanzador oficial de cada tienda. Zyntra:
+   - no vende, distribuye, descarga ni modifica juegos;
+   - no evita protecciones anticopia, sistemas antitrampas ni DRM;
+   - no inicia sesión en tus cuentas ni guarda contraseñas;
+   - no inyecta código en los juegos ni en otros programas.
+   Para jugar sigues necesitando una copia legítima de cada juego y cumplir los términos
+   de la tienda en la que lo compraste.
+
+3. CONTENIDO DE TERCEROS
+   Para mostrar carátulas, descripciones, capturas, reseñas y videos cortos, Zyntra consulta
+   servicios públicos de Steam, SteamSpy y Microsoft Store. Ese contenido pertenece a sus
+   dueños (desarrolladores, editores y tiendas). Zyntra solo lo muestra en tu equipo, para tu uso
+   personal, y lo guarda en una caché local. No lo redistribuyas. Esos servicios pueden cambiar,
+   limitar o dejar de responder en cualquier momento, y Zyntra no controla su disponibilidad
+   ni su exactitud.
+
+4. MARCAS
+   Steam, Epic Games, Xbox, Microsoft Store, Riot Games y los nombres de los juegos son marcas de
+   sus respectivos dueños. Zyntra es un proyecto independiente y no está afiliado, patrocinado
+   ni respaldado por Valve, Epic Games, Microsoft, Riot Games ni ningún editor de juegos.
+   El nombre «Zyntra» y su logo identifican al proyecto original de Zargch. Las versiones
+   modificadas deben usar otro nombre y otro logo.
+
+5. FUNCIONES QUE ACTÚAN SOBRE TUS ARCHIVOS
+   «Desinstalar» abre el desinstalador oficial del juego o de su tienda, y siempre pide
+   confirmación antes. «Quitar» y «Ocultar» solo afectan a la lista de Zyntra: no borran el juego.
+   Revisa bien antes de confirmar una acción.
+
+6. SIN GARANTÍA
+   Zyntra se ofrece «TAL CUAL», sin garantías de ningún tipo, expresas o implícitas, incluidas
+   las de comerciabilidad, idoneidad para un fin determinado y no infracción. Lo usas bajo tu
+   propio riesgo.
+
+7. LIMITACIÓN DE RESPONSABILIDAD
+   En la medida máxima que permita la ley aplicable, ni Zargch ni los colaboradores del proyecto
+   serán responsables de daños directos, indirectos, incidentales o consecuentes, ni de pérdidas
+   de datos, partidas guardadas o cuentas, derivados del uso o la imposibilidad de usar Zyntra.
+   Nada en estos términos limita los derechos que la ley de tu país te reconozca como
+   consumidor y que no puedan excluirse por contrato.
+
+8. PRIVACIDAD
+   Zyntra no tiene cuentas, publicidad ni telemetría, y no envía tus datos a Zargch.
+   Los detalles están en PRIVACIDAD.txt.
+
+9. ACTUALIZACIONES Y SOPORTE
+   Zyntra no se actualiza solo. Las versiones nuevas se publican en la página del proyecto.
+   El soporte es voluntario, a través de la sección Issues del repositorio, y sin plazos garantizados.
+
+10. DESCARGA SEGURA
+    Descarga Zyntra solo desde la página oficial del proyecto. Cada versión publica las sumas
+    SHA-256 (SHA256SUMS.txt) para que verifiques los archivos. Zargch no responde por copias
+    modificadas que se distribuyan en otros sitios.
+
+11. CAMBIOS A ESTOS TÉRMINOS
+    Estos términos pueden actualizarse con nuevas versiones del programa. Cada versión incluye
+    los términos que le aplican.
+
+12. LEY APLICABLE
+    Estos términos se rigen por las leyes de la República de Colombia, sin perjuicio de las normas
+    imperativas de protección al consumidor del país en que residas.
+
+Contacto: https://github.com/Zargch/zyntra/issues
